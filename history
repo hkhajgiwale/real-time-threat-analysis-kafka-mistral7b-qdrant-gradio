@@ -1,0 +1,49 @@
+bin/kafka-console-consumer.sh --topic my-cybersec-topic --bootstrap-server localhost:9092 --from-beginning
+
+docker pull apache/kafka:3.7.0
+
+sudo usermod -aG docker $USER
+docker pull apache/kafka:3.7.0
+
+pip3.10  install jupyter
+jupyter notebook --generate-config
+
+docker pull qdrant/qdrant
+docker run -p 6333:6333 qdrant/qdrant
+
+mkdir -p qdrant/threat_detection
+
+
+docker run -d -p 6333:6333 -v /home/jupyter/qdrant/threat_detection/qdrant/threat_detection:/qdrant/storage qdrant/qdrant
+e6dd8ee37bbd943e4e41998aa2b71df1f381aff700ec7e8a7ddba171aefaae82
+
+
+upstream qdrant {
+  server localhost:6333;
+  keepalive 15;
+}
+
+server {
+  server_name qdrant.example.com;
+
+  access_log /var/log/qdrant/qdrant.example.com_access_log;
+  error_log /var/log/qdrant/qdrant.example.com_error_log;
+
+  location / {
+    proxy_pass http://qdrant;
+    proxy_http_version 1.1;
+    proxy_set_header Connection "Keep-Alive";
+    proxy_set_header Proxy-Connection "Keep-Alive";
+  }
+}
+
+
+http://35.238.216.190/dashboard
+
+
+https://gorannikolovski.com/blog/qdrant-simplified-setting-up-and-using-a-vector-database#creating-qdrant-collection
+
+
+bin/kafka-topics.sh --create --topic threat-analytics-topic --bootstrap-server localhost:9092
+
+docker run -d -p 9092:9092 apache/kafka:3.7.0

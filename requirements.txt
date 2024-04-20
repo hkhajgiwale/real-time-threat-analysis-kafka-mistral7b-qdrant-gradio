@@ -1,0 +1,9 @@
+Faker
+faker-security
+confluent-kafka
+qdrant-client
+sentence-transformers
+scikit-learn
+langchain
+streamlit
+langchain-community

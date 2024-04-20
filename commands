@@ -1,0 +1,13 @@
+docker pull apache/kafka:3.7.0
+
+docker run -d -p 6333:6333 -v /home/harsh/qdrant/threat_detection:/qdrant/storage qdrant/qdrants
+docker pull qdrant/qdrant
+sudo usermod -aG docker $USER
+docker run -d -p 9092:9092 apache/kafka:3.7.0
+
+jupyter notebook --ip=0.0.0.0 &
+jupyter notebook --ip=34.30.65.31
+
+
+bin/kafka-topics.sh --create --topic threat-analytics-topic --bootstrap-server localhost:9092
+

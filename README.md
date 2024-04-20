@@ -33,6 +33,7 @@ We generate the fake cybersecurity data with following fields
 - mistralai/Mistral-7B-Instruct-v0.2
 - LangChain
 - Gradio
+- Nvidia GPU T4
 
 
 ## Installation

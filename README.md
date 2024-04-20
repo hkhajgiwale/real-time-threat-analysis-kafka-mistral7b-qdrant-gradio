@@ -34,20 +34,35 @@ We generate the fake cybersecurity data with following fields
 - LangChain
 - Gradio
 
-### Installation
-Clone the repository and install the required dependencies:
+
+## Installation
+#### Setup Kafka
+```
+$ docker pull apache/kafka:3.7.0
+$ sudo usermod -aG docker $USER
+$ docker run -d -p 9092:9092 apache/kafka:3.7.0
+```
+
+#### Setup Qdrant DB
+```
+mkdir -p /home/jupyter/qdrant
+docker pull qdrant/qdrant
+docker run -d -p 6333:6333 -p 6334:6334 -v /home/jupyter/qdrant:/qdrant/storage qdrant/qdrant
+```
+
+#### Clone the repository and install the required dependencies:
 
 ```
-git clone https://github.com/vardhanam/enterprise_chatbot_qdrant.git
-cd enterprise_chatbot_qdrant
+git clone https://github.com//hkhajgiwale/real-time-threat-analysis-kafka-mistral7b-qdrant-gradio.git
+cd real-time-threat-analysis-kafka-mistral7b-qdrant-gradio
 pip install -r requirements.txt
 ```
-### Generating the cybersecurity data for threat analysis
+#### Generating the cybersecurity data for threat analysis
 Run the python file to generate the fake data and push it to Kafka in the infinite loop. Only once you interrupt it, only then the script will terminate
 ```
 python3.10 generate_events.py
 ```
-### Running the application
+####  Running the application
 To run the app, navigate to the project directory and execute:
 ```
 python3.10 app.py
@@ -58,8 +73,7 @@ python3.10 app.py
 ## Usage
 Once the application is running, navigate to the provided URL in your web browser and hit your questions. The LLM will process the output and reply accordingly
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+![Gradio Application](gradio_application.png)
 
 ## Jupyter Notebook
 
